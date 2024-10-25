@@ -9,7 +9,7 @@
     <title>GPT Docs Helper</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -17,6 +17,20 @@
             align-items: center;
             height: 100vh;
             background-color: #f4f4f9;
+        }
+
+        #title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0px;
+        }
+
+        #subtitle {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 16px;
         }
 
         #chat-container {
@@ -39,6 +53,12 @@
             margin-bottom: 10px;
         }
 
+        #messages div.message {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
         #query-form {
             display: flex;
         }
@@ -59,14 +79,36 @@
             cursor: pointer;
             margin-left: 10px;
         }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin: 10px auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 
 <body>
     <div id="chat-container">
+        <h1 id="title">GPT Docs Helper</h1>
+        <h2 id="subtitle">Привет! Я помогу тебе найти информацию в документах 💛</h2>
         <div id="messages"></div>
         <form id="query-form">
-            <input type="text" id="query-input" placeholder="Введите ваш вопрос..." required>
+            <input type="text" id="query-input" placeholder="Есть вопрос? Пиши скорее!" required>
             <button type="submit" id="send-button">Отправить</button>
         </form>
     </div>
@@ -83,8 +125,14 @@
 
             // Display the user's message
             const userMessage = document.createElement('div');
-            userMessage.textContent = `Вы: ${query}`;
+            userMessage.className = 'message';
+            userMessage.textContent = `🙎‍♂️ Вы: ${query}`;
             messages.appendChild(userMessage);
+
+            // Display loading spinner
+            const spinner = document.createElement('div');
+            spinner.className = 'spinner';
+            messages.appendChild(spinner);
 
             // Send the query to the server
             try {
@@ -97,12 +145,18 @@
                 });
                 const data = await response.json();
 
+                // Remove loading spinner
+                messages.removeChild(spinner);
+
                 // Display the response from the server
                 const serverMessage = document.createElement('div');
-                serverMessage.textContent = `Помощник: ${data.answer}`;
+                serverMessage.className = 'message';
+                serverMessage.textContent = `🤖 Помощник: ${data.answer}`;
                 messages.appendChild(serverMessage);
             } catch (error) {
                 console.error('Error:', error);
+                // Remove loading spinner in case of error
+                messages.removeChild(spinner);
             }
         });
     </script>
