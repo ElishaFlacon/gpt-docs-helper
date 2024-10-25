@@ -57,7 +57,10 @@
 📺 Демо:
 </h2>
 
-- <a href="">Нажать чтобы демо видео!</a>
+- <a href="https://github.com/user-attachments/assets/246aa0a9-924d-4696-85bf-9f35a35ab184">Нажать чтобы демо видео!</a>
+
+https://github.com/user-attachments/assets/246aa0a9-924d-4696-85bf-9f35a35ab184
+
 
 
 
