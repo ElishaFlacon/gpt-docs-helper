@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -64,8 +64,8 @@
     <div id="chat-container">
         <div id="messages"></div>
         <form id="query-form">
-            <input type="text" id="query-input" placeholder="Type your message..." required>
-            <button type="submit" id="send-button">Send</button>
+            <input type="text" id="query-input" placeholder="Введите ваш вопрос..." required>
+            <button type="submit" id="send-button">Отправить</button>
         </form>
     </div>
 
@@ -81,7 +81,7 @@
 
             // Display the user's message
             const userMessage = document.createElement('div');
-            userMessage.textContent = `You: ${query}`;
+            userMessage.textContent = `Вы: ${query}`;
             messages.appendChild(userMessage);
 
             // Send the query to the server
@@ -97,7 +97,7 @@
 
                 // Display the response from the server
                 const serverMessage = document.createElement('div');
-                serverMessage.textContent = `AI: ${data.answer}`;
+                serverMessage.textContent = `Помощник: ${data.answer}`;
                 messages.appendChild(serverMessage);
             } catch (error) {
                 console.error('Error:', error);
