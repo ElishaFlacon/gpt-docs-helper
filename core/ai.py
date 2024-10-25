@@ -80,33 +80,10 @@ class AI:
 
     def query(self, query: str) -> str:
         docs = self.docsearch.similarity_search(query)
-        return self.chain.run(input_documents=docs, question=query)
 
-    # def run(self):
-    #     root_files = upload_file()
-    #     if not root_files:
-    #         print("No files uploaded. Exiting.")
-    #         return
+        russian_query = f"Дай ответ на этот вопрос на русском языке: {query}"
 
-    #     docsearch = extract_texts(root_files)
-
-    #     count = 0
-    #     while True:
-    #         print("Question ", count + 1)
-
-    #         query = input(
-    #             " Ask your question or if you have no further question type stop:\n ")
-
-    #         if query.lower() == "stop":
-    #             print("### Thanks for using the app! ###")
-    #             break
-    #         elif query == "":
-    #             print("### Your input is empty! Try again! ###")
-    #             continue
-    #         else:
-    #             wrapped_text = textwrap.wrap(
-    #                 run_query(query, docsearch), width=100)
-    #             print("Answer:")
-    #             for line in wrapped_text:
-    #                 print(line)
-    #             count += 1
+        return self.chain.run(
+            input_documents=docs,
+            question=russian_query,
+        )
