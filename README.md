@@ -33,14 +33,15 @@
 - `git clone https://github.com/ElishaFlacon/gpt-docs-helper.git`
 - `cd gpt-docs-helper`
 - `cp .env-example .env`
-- `python -m venv <venv_name>`
-- `<venv_name>/Scripts/activate` (windows) или `source <venv_name>/Scripts/activate` (linux)
-- `pip install -r requirements.txt`
+- Устанавливаем зависимости:
+  - `python -m venv <venv_name>`
+  - `<venv_name>/Scripts/activate` (windows) или `source <venv_name>/Scripts/activate` (linux)
+  - `pip install -r requirements.txt`
 - Получаем API ключ от OpenAI `https://platform.openai.com/account/billing/overview`
 - Вставляем API ключ в файл `.env`
 - Добавляем документы в папку `documents`
-- `python main.py`
-- Приложение запустится на [`localhost:8000`](http://localhost:8000/)
+- Запускаем сервис `python main.py`
+- Сервис запустится на [`localhost:8000`](http://localhost:8000/)
 
 <h3>
 Запускаем, не работет, ура! 🗿🚬
